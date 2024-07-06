@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Fa' un test!</h1>
+
+
+<!-- TODO -->
+{% for test in object_list %}
+    <a href="{% url 'psy_test:specific_test' slug=test.slug %}">{{test}}</a><br>
+{% endfor %}
+
+
+{% endblock %}

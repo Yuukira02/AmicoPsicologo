@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>I miei test: </h2>
+    {% if object_list %}
+        {% for myresult in object_list %}
+            <p>
+                <a href="{% url 'psy_test:result' slug=myresult.result.rel_test.slug answer_type=myresult.result.answer_type %}">
+                    {{myresult.result}}
+                </a>
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>
+            Per ora non hai effettuato nessun test! 
+            <a href="{% url 'psy_test:home' %}">Rimediamo?</a>
+        </p>
+    {% endif %}
+{% endblock %}

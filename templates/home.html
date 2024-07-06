@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <body>
+        <div style="text-align: center;">
+            {% if user.is_authenticated %}
+                Bentornato, {{user.first_name}}!
+            {% else %}
+                Benvenuto! <br>
+            {% endif %}
+        </div>
+    </body>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div style="text-align: center;" class="form-inline">
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_table}}
+        <button type="submit" class="btn btn-primary">Cerca</button>
+    </form>
+</div>
+
+<div class="container mt-5">
+    <h2>I nostri post: </h2>
+    {% if object_list %}
+        <div class="row">
+            {% for blog in object_list %}
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="dropdown-item" href="{% url 'blog:read' pk=blog.id %}">{{ blog.title }}</a></h5>                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center">
+            <h3>Non abbiamo ancora nessun blog.</h3>
+            <p>
+                {% if "Psychologists" in user.groups.all.o.name or user.is_staff %}
+                    <a href="{% url 'blog:create' %}" class="btn btn-primary">Sii il primo a postare!</a>
+                {% else %}
+                    Presto posteremo qualcosa, resta aggiornato! ☺
+                {% endif %}
+            </p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+    {% extends 'base.html' %}
+    {% block body %}
+        <p>
+            <center>
+                {{object}}
+            </center>
+            <br>
+            {{object.description}}
+            <br>
+        </p>
+        {% for q in questions_with_answers %}
+        <p>
+            {{q.question}} <br>
+            {% for answer in q.answers %}
+                {{answer}} <br>
+            {% endfor %}
+        </p> 
+        {% endfor %}
+    {% endblock %}

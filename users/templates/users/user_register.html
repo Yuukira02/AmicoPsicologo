@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+<!-- useless for now:  -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  -->
+
+
+{% block body %}
+
+<title>Unisciti a noi!</title>
+
+<form method="post"> 
+    {% csrf_token %}
+    {{form }}
+
+    <input type="submit" class="btn btn-success" value="Invia">
+
+</form>
+{% endblock %}

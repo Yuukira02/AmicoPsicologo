@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <center>
+        <!-- TODO BETTER:  -->
+        <h2>{{object.title}}</h2>
+        <small>{{object.author.first_name}} {{object.author.last_name}}</small> <br> <br>
+    </center>
+    <div style="margin: 5mm;">
+        <p>{{object.content}}</p><br>
+        <!-- TODO: last updated in lingua italiana -->
+        <small>{{object.updated}}</small>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% if error %}
+        {{error}} <br>
+    {% else %}
+        <h1>I miei dati: </h1>
+        {{user}} <br>
+        {{user.first_name}} <br>
+        {{user.last_name}} <br>
+        {{user.email}}    <br>
+        {{profile.birth_date}} <br>
+
+        {% if psycho %}
+        <img
+            class="rounded-circle account-img"
+            src="{{ profile.avatar.url }}"
+        /> <br>
+            {{profile.description}} <br>
+        {% endif %}
+        <p><a href="{% url 'users:change_profile' %}">Modifica il profilo</a></p> <br>
+    {% endif %}
+{% endblock %}
+
+{% include 'home-ret.html' %}

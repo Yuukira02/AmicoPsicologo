@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h2>Valuta lo psicologo: {{psycho.user.first_name}} {{psycho.user.last_name}}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Invia</button>
+  </form>
+{% endblock %}

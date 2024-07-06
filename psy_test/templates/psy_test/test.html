@@ -1,0 +1,19 @@
+    {% extends 'base.html' %}
+    {% block body %}
+        <p>
+            <center>
+                <h2>{{object_test}}</h2>
+            </center>
+            <br>
+            {{object_test.description}}
+            <br>
+        </p>
+        <form action="{% url 'psy_test:specific_test' slug=object_test.slug %}" method="POST"> 
+            {% csrf_token %}
+
+            {{form.as_p}} <br>
+        <input type="submit" value="Invia"/>
+        </form>
+        <br>
+
+    {% endblock %}

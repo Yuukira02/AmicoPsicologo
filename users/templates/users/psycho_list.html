@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% if object_list %}
+        {% for psychologist in object_list %}
+            <p><a href="{% url 'users:public_profile' psychologist.pk %}">{{psychologist}}</a></p>  <br>
+        {% endfor %}
+    {% else %}
+        <p>Per ora non abbiamo nessuno psicologo in lista!</p> <br>
+    {% endif %}
+{% endblock %}

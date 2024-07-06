@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div style="text-align: right;">
+    {% if "Clients" in user.groups.all.0.name or user.is_staff %}
+        <a href="{% url 'users:create_or_update_rating' object.pk %}">Cosa ne pensi? Dacci un commento!</a> <br>
+    {% endif %}
+</div>
+
+<center>
+    <h1>{{object.user.first_name}} {{object.user.last_name}}</h1>
+    <img
+      class="rounded-circle account-img"
+      src="{{ object.user.profile.avatar.url }}"
+    />
+    <p>{{object.description}}</p> <br>
+    <p>Rating medio: {{object.average_rating}}</p>
+    {% if user.is_authenticated %}
+        <a href="{% url 'chat:my_chat_with' object.user.pk user.pk %}">Contatta</a>
+    {% endif %}
+</center>
+
+
+
+{% endblock %}
+
+
+{% block bottompage %}
+
+    <h5>Cosa ne pensano i nostri utenti: </h5>
+    {% for rating in object.received_ratings.all %}
+        <div style="margin: 5mm;">
+            <strong>{{rating.user_from.user.first_name}} {{rating.user_from.user.last_name}}: </strong>
+            <span style="color: cadetblue;">{{rating.rating}}</span>
+            <br>
+            {{rating.comment}} <br>
+            <small>{{rating.last_updated}}</small>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+

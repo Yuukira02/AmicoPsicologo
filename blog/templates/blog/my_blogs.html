@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div display: inline>
+        <div style="text-align: right; margin-inline-end: 7mm;">
+            <a href="{% url 'blog:create' %}">Crea un post!</a>
+        </div>
+        
+        <span style="text-align: center; margin-right: 10">
+            <h2>I miei blog: </h2>
+        </span>
+    </div>
+
+
+    <center></center>
+    {% if object_list %}
+    <div style="margin-left: 5mm;">
+            {% for blog in object_list %}
+                <p>
+                    <a href="{% url 'blog:read' pk=blog.id %}" class="">
+                        {{blog}}
+                    </a><br>
+                    <small>
+                        <a href="{% url 'blog:update' pk=blog.pk %}">Modifica</a>&emsp; 
+                        <a href="{% url 'blog:delete' pk=blog.pk %}">Elimina</a>
+                    </small>
+                </p>
+            {% endfor %}
+    </div>
+    {% else %}
+    <p>Per ora nessun post!</p>
+    {% endif %}
+{% endblock %}

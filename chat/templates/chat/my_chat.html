@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!-- <center> -->
+    <h2>{{ user_to.first_name }} {{ user_to.last_name }}</h2>
+    <div style="text-align: right;" class="form-inline">
+        
+        <form method="post" class="form-inline">
+            {% csrf_token %}
+            <div class="form-group mb-2 flex-grow-1">
+                {{ form }}
+            </div>
+            <div class="form-group mb-2 ml-2">
+                <button type="submit" class="btn btn-primary">Invia</button>
+            </div>
+        </form>
+    </div>
+    <div class="chat-container mb-4" style="margin: 10mm;">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    {% if message.author == user_from %}
+                        <div class="message-box text-right mb-2" style="text-align: right;">
+                            <div class="message-content bg-primary text-white p-2 rounded">
+                                {{ message }} <br>
+                                <small>
+                                    {{message.author.first_name}} {{message.author.last_name}}
+                                    {{message.created}}
+                                </small>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="message-box text-left mb-2" style="text-align: left;">
+                            <div class="message-content bg-light text-dark p-2 rounded">
+                                {{ message }} <br>
+                                <small>
+                                    {{message.author.first_name}} {{message.author.last_name}}
+                                    {{message.created}}
+                                </small>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Per ora nessun messaggio!</p>
+        {% endif %}
+    </div>
+<!-- </center> -->
+{% endblock %}

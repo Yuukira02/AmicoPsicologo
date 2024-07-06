@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container mt-5">
+    {% if object_list %}
+        <div class="row">
+            {% for blog in object_list %}
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="dropdown-item" href="{% url 'blog:read' pk=blog.id %}">{{ blog.title }}</a></h5>                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center">
+            <h3>Nessun risultato per la tua ricerca.</h3><br>
+            <a href="{% url 'blog:all' %}">Riprova</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

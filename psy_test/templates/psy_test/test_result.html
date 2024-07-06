@@ -1,0 +1,16 @@
+    {% extends 'base.html' %}
+    {% block body %}
+        <p>
+            <center>
+                <h1>{{object}} - Il tuo risultato: </h1><br>
+                <h3>{{result}}</h3> <br>
+            </center>
+            <br>
+            <!-- {{test.description}} -->
+            <br>
+        </p>
+        <p>
+            {{result.content}}
+        </p>
+        <a href="{% url 'psy_test:home' %}">Torna alla pagina principale</a>
+    {% endblock %}

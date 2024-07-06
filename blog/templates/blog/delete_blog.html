@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+    <p>Confermi di voler eliminare il blog? </p><br>
+    <button type="submit">Sì, sono sicuro</button>
+  </form>
+{% endblock %}

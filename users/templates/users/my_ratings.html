@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block body %}
+    <h2>I miei commenti: </h2>
+    {% if ratings != None %}
+        {% for rating in ratings %}
+            <p>
+                <a href="{% url 'users:public_profile' rating.psycho_to.pk %}">{{rating.psycho_to}}</a> <br>
+                {{rating}}... <br>
+                <small>{{rating.last_updated}}</small>&emsp; <br>
+                <a href="{% url 'users:create_or_update_rating' rating.psycho_to.pk %}">Modifica</a> &emsp;
+                <a href="{% url 'users:delete_rating' rating.pk %}">Elimina</a>
+            </p>
+        {% endfor %}
+    {% else %}
+    <p>Per ora nessun rating!</p>
+    {% endif %}
+{% endblock %}
